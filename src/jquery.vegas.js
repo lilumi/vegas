@@ -24,6 +24,7 @@
         init : function(settings) {
             var options = {
                 src: getBackground(),
+                alt: '',
                 align: 'center',
                 valign: 'center',
                 fade: 0,
@@ -44,6 +45,7 @@
                 'left': '0px',
                 'top': '0px'
             })
+            .attr('alt',options.alt)
             .bind('load', function() {
                 if ($new == $current) {
                     return;
@@ -199,6 +201,10 @@
                 if (typeof(settings.fade) == 'undefined') {
                     settings.fade = options.fade;
                 }
+                
+                if (typeof(settings.alt) == 'undefined') {
+                    settings.alt = options.alt;
+                }                
 
                 if (settings.fade > options.delay) {
                     settings.fade = options.delay;
@@ -309,6 +315,7 @@
                 if (backgrounds[i].src) {
                     var cacheImage = document.createElement('img');
                     cacheImage.src = backgrounds[i].src;
+                    cacheImage.alt = backgrounds[i].alt;
                     cache.push(cacheImage);
                 }
             }
